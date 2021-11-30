@@ -1,5 +1,7 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.interfaces;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;

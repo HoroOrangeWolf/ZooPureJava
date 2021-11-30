@@ -23,7 +23,7 @@ public class TicketRepository implements Repository<Ticket> {
     }
 
     @Override
-    public void save(Ticket element) {
+    public void save(@org.jetbrains.annotations.NotNull Ticket element) {
         element.setId(getNextId());
         repo.add(element);
     }

@@ -1,14 +1,12 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Animal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Animal {
 
     private Long id;

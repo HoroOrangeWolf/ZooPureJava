@@ -37,7 +37,6 @@ public class AnimalRepository implements Repository<Animal> {
         an.setName(animal.getName());
         an.setDescription(animal.getDescription());
         an.setIdSection(animal.getIdSection());
-
     }
 
     @Override

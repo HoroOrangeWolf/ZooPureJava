@@ -40,9 +40,9 @@ public class ZooPureJava {
         service.addAnimal(animal3);
         service.addAnimal(animal4);
 
-        System.out.println(service.getAllAnimals());
         System.out.println(service.getAllSections());
         System.out.println(service.getSectionsOnMap());
+        System.out.println(service.getAllAnimals());
 
 
     }

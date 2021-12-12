@@ -1,16 +1,14 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class TicketHistory {
 
     private Long id;
@@ -18,6 +16,8 @@ public class TicketHistory {
     private Long userID;
 
     private Long ticketId;
+
+
 
     private Date date;
 

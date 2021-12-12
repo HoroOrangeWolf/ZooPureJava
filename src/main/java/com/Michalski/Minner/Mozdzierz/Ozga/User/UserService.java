@@ -10,7 +10,6 @@ public class UserService {
     private final UserRepository repository = new UserRepository();
 
     public void addUser(User user){
-
         if(repository.isEmailTaken(user.getEmail()))
             throw new IllegalStateException("Email is taken!");
 

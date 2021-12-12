@@ -53,4 +53,13 @@ public class TicketService {
         return ticketRepository.getById(id);
     }
 
+    public void exitZoo(Long id){
+        Optional<Ticket> ticket = ticketRepository.getById(id);
+
+        if(ticket.isEmpty())
+            return;
+
+        ticket.get().setIsTicketActive(false);
+    }
+
 }

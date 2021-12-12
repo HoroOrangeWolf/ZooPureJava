@@ -26,6 +26,7 @@ public class Ticket {
     private Float price;
 
     private Boolean isTicketValidate = false;
+    private Boolean isTicketActive = true;
 
     public Ticket(User user, Advertisement advertisement, Calendar date, Path path, Float price) {
         this.user = user;

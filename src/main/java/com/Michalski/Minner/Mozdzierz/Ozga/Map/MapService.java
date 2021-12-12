@@ -82,4 +82,16 @@ public class MapService {
 
         elementList.get(index).setIsVisited(isVisited);
     }
+
+    public List<PathElement> getUnvisitedSections(Long idTicket){
+        Optional<Ticket> ticketById = service.getTicketById(idTicket);
+
+        if(ticketById.isEmpty())
+            return null;
+
+        Ticket ticket = ticketById.get();
+
+        return ticket.getPath().getPathElements().stream().filter(f -> !f.getIsVisited()).toList();
+    }
+
 }

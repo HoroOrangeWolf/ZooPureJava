@@ -1,6 +1,5 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.User;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.TicketHistory;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 
 import java.util.ArrayList;

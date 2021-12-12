@@ -1,7 +1,7 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Request.Request;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@NoArgsConstructor
 public class TicketRepository implements Repository<Ticket> {
 
     private static final List<Ticket> repo = new ArrayList<>();
@@ -23,8 +24,9 @@ public class TicketRepository implements Repository<Ticket> {
     }
 
     @Override
-    public void save(@org.jetbrains.annotations.NotNull Ticket element) {
+    public void save(Ticket element) {
         element.setId(getNextId());
+
         repo.add(element);
     }
 
@@ -35,11 +37,12 @@ public class TicketRepository implements Repository<Ticket> {
         if(first.isEmpty())
             return;
 
-        Ticket ticket = first.get();
+        Ticket ticketHistory = first.get();
 
-        ticket.setName(element.getName());
-        ticket.setDescription(element.getDescription());
-        ticket.setPrice(element.getPrice());
+        ticketHistory.setDate(element.getDate());
+        ticketHistory.setUser(element.getUser());
+        ticketHistory.setPrice(element.getPrice());
+        ticketHistory.setAdvertisement(element.getAdvertisement());
     }
 
     @Override

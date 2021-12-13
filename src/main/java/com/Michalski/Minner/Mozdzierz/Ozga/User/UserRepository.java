@@ -29,7 +29,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public void update(User element) {
-        Optional<User> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
+        Optional<User> first = repo.stream().filter((f) -> Objects.equals(f.getId(), element.getId())).findFirst();
 
         if(first.isEmpty())
             return;

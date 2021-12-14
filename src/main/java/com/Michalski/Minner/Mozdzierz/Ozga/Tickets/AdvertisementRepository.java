@@ -36,8 +36,8 @@ public class AdvertisementRepository implements Repository<Advertisement> {
 
         Advertisement advertisement = first.get();
 
-        advertisement.setPrice(advertisement.getPrice());
-        advertisement.setSections(advertisement.getSections());
+        advertisement.setPrice(element.getPrice());
+        advertisement.setSections(element.getSections());
     }
 
     @Override

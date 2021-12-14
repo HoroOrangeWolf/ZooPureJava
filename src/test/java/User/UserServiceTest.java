@@ -14,6 +14,11 @@ import java.util.Optional;
 public class UserServiceTest {
     private final UserService service = new UserService();
 
+    @AfterEach
+    public void remove(){
+        System.out.println("Wyczyszczono...");
+    }
+
     @Test
     public void addUser(){
         Calendar cal = Calendar.getInstance();
@@ -27,6 +32,20 @@ public class UserServiceTest {
         Assertions.assertTrue(user.isPresent());
         Assertions.assertEquals(u1,user.get());
     }
+
+    @Test
+    public void addUserIfEmailIsTake(){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        Date date = cal.getTime();
+        User u1 = new User(1L,"siema",false, date,"user@test.com");
+
+
+        Assertions.assertThrows(IllegalStateException.class, ()->{
+            service.addUser(u1);
+        });
+    }
+
     @Test
     public void removeUser(){
         Calendar cal = Calendar.getInstance();

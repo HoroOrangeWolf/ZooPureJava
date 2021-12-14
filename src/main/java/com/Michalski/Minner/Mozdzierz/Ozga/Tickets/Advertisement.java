@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @ToString
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Advertisement {
 
     private Long id;

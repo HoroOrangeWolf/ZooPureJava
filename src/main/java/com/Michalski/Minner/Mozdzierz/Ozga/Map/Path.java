@@ -2,6 +2,7 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Map;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Path {
     private List<PathElement> pathElements;
     private int pathIndex = 0;

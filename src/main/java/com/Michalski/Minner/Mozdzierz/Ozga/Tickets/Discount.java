@@ -7,12 +7,11 @@ public class Discount {
     private Discount(){}
 
     public static void setDiscount(TicketType type, Float discountPercentage){
-        float discount = discountPercentage/100.f;
 
         switch (type){
-            case STUDENT -> adult = discount;
-            case KID -> kid = discount;
-            case ADULT ->  adult = discount;
+            case STUDENT -> student = discountPercentage;
+            case KID -> kid = discountPercentage;
+            case ADULT ->  adult = discountPercentage;
         }
     }
 

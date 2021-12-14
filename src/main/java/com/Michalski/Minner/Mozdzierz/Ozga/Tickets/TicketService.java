@@ -3,13 +3,14 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 @NoArgsConstructor
 public class TicketService {
-    private final AdvertisementRepository repository = new AdvertisementRepository();
+    private final AdvertisementRepository advertisementRepository = new AdvertisementRepository();
     private final TicketRepository ticketRepository = new TicketRepository();
 
     public void buyTicket(User user, Advertisement ticket){
@@ -17,7 +18,8 @@ public class TicketService {
     }
 
     public void buyTicket(User user, Advertisement ticket, TicketType type){
-        ticketRepository.save(new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(type)));
+        Ticket ticket1 = new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(type));
+        ticketRepository.save(ticket1);
     }
 
     public void buyTicket(@NotNull User user,@NotNull Advertisement advertisement, @NotNull Calendar date, TicketType type){
@@ -46,7 +48,7 @@ public class TicketService {
     }
 
     public void removeTicket(Long id){
-        repository.removeById(id);
+        advertisementRepository.removeById(id);
     }
 
     public boolean validateTicket(@NotNull Ticket ticket){

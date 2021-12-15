@@ -10,6 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class User {
 
     private Long id;

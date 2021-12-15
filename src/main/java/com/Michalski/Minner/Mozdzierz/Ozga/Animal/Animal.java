@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Animal {
 
     private Long id;
@@ -17,6 +18,7 @@ public class Animal {
     private String name;
 
     private String description;
+
 
 
 }

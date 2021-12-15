@@ -2,6 +2,7 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Animal;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -21,7 +22,7 @@ public class SectionRepository implements Repository<Section> {
     }
 
     @Override
-    public void save(Section element) {
+    public void save(@NotNull Section element) {
         element.setId(getNextId());
         repo.add(element);
     }
@@ -45,12 +46,12 @@ public class SectionRepository implements Repository<Section> {
 
     @Override
     public void remove(Section element) {
-
+        repo.removeIf(f -> Objects.equals(f, element));
     }
 
     @Override
     public void removeById(Long id) {
-
+        repo.removeIf(f -> Objects.equals(f.getId(), id));
     }
 
     @Override
@@ -60,6 +61,6 @@ public class SectionRepository implements Repository<Section> {
 
     @Override
     public Optional<Section> getById(Long id) {
-        return Optional.empty();
+        return repo.stream().filter(f -> Objects.equals(f.getId(), id)).findFirst();
     }
 }

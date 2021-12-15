@@ -1,8 +1,6 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Request.Request;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +8,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-@NoArgsConstructor
-public class TicketHistoryRepository implements Repository<TicketHistory> {
+public class AdvertisementRepository implements Repository<Advertisement> {
 
-    private static final List<TicketHistory> repo = new ArrayList<>();
+    private static final List<Advertisement> repo = new ArrayList<>();
     private static long lastId = 1;
 
     private static long getNextId(){
@@ -25,29 +22,26 @@ public class TicketHistoryRepository implements Repository<TicketHistory> {
     }
 
     @Override
-    public void save(TicketHistory element) {
+    public void save(@org.jetbrains.annotations.NotNull Advertisement element) {
         element.setId(getNextId());
-
         repo.add(element);
     }
 
     @Override
-    public void update(TicketHistory element) {
-        Optional<TicketHistory> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
+    public void update(Advertisement element) {
+        Optional<Advertisement> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
 
         if(first.isEmpty())
             return;
 
-        TicketHistory ticketHistory = first.get();
+        Advertisement advertisement = first.get();
 
-        ticketHistory.setTicketId(element.getTicketId());
-        ticketHistory.setDate(element.getDate());
-        ticketHistory.setUserID(element.getUserID());
-        ticketHistory.setPrice(element.getPrice());
+        advertisement.setPrice(element.getPrice());
+        advertisement.setSections(element.getSections());
     }
 
     @Override
-    public void remove(TicketHistory element) {
+    public void remove(Advertisement element) {
         repo.removeIf(f -> Objects.equals(f.getId(), element.getId()));
     }
 
@@ -57,12 +51,12 @@ public class TicketHistoryRepository implements Repository<TicketHistory> {
     }
 
     @Override
-    public List<TicketHistory> getByPredictor(Predicate<? super TicketHistory> predicate) {
+    public List<Advertisement> getByPredictor(Predicate<? super Advertisement> predicate) {
         return repo.stream().filter(predicate).toList();
     }
 
     @Override
-    public Optional<TicketHistory> getById(Long id) {
+    public Optional<Advertisement> getById(Long id) {
         return repo.stream().filter(f -> Objects.equals(f.getId(), id)).findFirst();
     }
 }

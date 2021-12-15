@@ -3,6 +3,7 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 import lombok.*;
 
 @NoArgsConstructor
+@EqualsAndHashCode
 @AllArgsConstructor
 @Getter
 @Setter

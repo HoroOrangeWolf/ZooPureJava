@@ -1,6 +1,5 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.User;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.TicketHistory;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public void update(User element) {
-        Optional<User> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
+        Optional<User> first = repo.stream().filter((f) -> Objects.equals(f.getId(), element.getId())).findFirst();
 
         if(first.isEmpty())
             return;

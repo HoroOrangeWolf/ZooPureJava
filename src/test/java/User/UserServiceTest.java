@@ -43,10 +43,13 @@ public class UserServiceTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
         User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u2 = new User(1L,"Ryszard",false, date,"user@test.com");
+
+        service.addUser(u1);
 
 
         Assertions.assertThrows(IllegalStateException.class, ()->{
-            service.addUser(u1);
+            service.addUser(u2);
         });
     }
 

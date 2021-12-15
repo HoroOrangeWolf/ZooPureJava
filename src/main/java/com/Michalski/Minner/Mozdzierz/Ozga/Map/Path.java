@@ -20,5 +20,9 @@ public class Path {
         List<PathElement> elements = new ArrayList<>();
         for(Section section : sections)
             elements.add(new PathElement(section));
+
+        pathElements = elements;
     }
+
+
 }

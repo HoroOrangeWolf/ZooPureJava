@@ -2,6 +2,7 @@ package User;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
+import com.Michalski.Minner.Mozdzierz.Ozga.User.UserRepository;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -13,10 +14,13 @@ import java.util.Optional;
 
 public class UserServiceTest {
     private final UserService service = new UserService();
+    private final UserRepository repository = new UserRepository();
 
     @AfterEach
     public void remove(){
         System.out.println("Wyczyszczono...");
+
+        repository.getByPredictor(f -> true).forEach(f -> repository.removeById(f.getId()));
     }
 
     @Test

@@ -11,7 +11,7 @@ import java.util.Optional;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MapService {
-    private TicketService service;
+    private TicketService service = new TicketService();
 
     public PathElement getNext(Long id){
         Optional<Ticket> ticketById = service.getTicketById(id);
@@ -24,13 +24,11 @@ public class MapService {
         List<PathElement> elementList = path.getPathElements();
 
         int index = path.getPathIndex();
-
-        if((index + 1) >= elementList.size())
+        if((index) >= elementList.size())
             return null;
 
         path.setPathIndex(path.getPathIndex() + 1);
-
-        return elementList.get(index + 1);
+        return elementList.get(index);
     }
 
     public PathElement getPrev(Long id){
@@ -63,9 +61,33 @@ public class MapService {
 
         List<PathElement> elementList = path.getPathElements();
 
-        int index = path.getPathIndex();
+        int index = path.getPathIndex() - 1;
+
+        if(index<0)
+            throw new IllegalStateException("Podroz sie nie zaczela!");
 
         elementList.get(index).setIsVisited(true);
+    }
+
+    public PathElement getCurrent(Long id){
+        Optional<Ticket> ticketById = service.getTicketById(id);
+
+        if(ticketById.isEmpty())
+            return null;
+
+        Path path = ticketById.get().getPath();
+
+        List<PathElement> elementList = path.getPathElements();
+
+        int index = path.getPathIndex() - 1;
+
+        if(index < 0)
+            throw new IllegalStateException("Podroz sie jeszcze nie zaczela");
+
+        if(index == elementList.size() - 1)
+            throw new IllegalStateException("Podroz sie skonczyla");
+
+        return elementList.get(index);
     }
 
     public void setVisited(Long id, Boolean isVisited){
@@ -78,7 +100,10 @@ public class MapService {
 
         List<PathElement> elementList = path.getPathElements();
 
-        int index = path.getPathIndex();
+        int index = path.getPathIndex() - 1;
+
+        if(index<0)
+            throw new IllegalStateException("Podroz sie nie zaczela!");
 
         elementList.get(index).setIsVisited(isVisited);
     }

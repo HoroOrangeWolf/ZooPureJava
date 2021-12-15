@@ -55,6 +55,136 @@ public class TicketServiceTest {
 
         Assertions.assertEquals(ticketHistory.get(0).getPrice(), advertisement1.getPrice()*Discount.getDiscount(TicketType.KID));
     }
+    @Test
+    public void buyTicketWithThrowAndDiscount(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Discount.setDiscount(TicketType.KID, 0.8f);
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -100);
+
+        Assertions.assertThrows(IllegalStateException.class, ()->{
+            service.buyTicket(user,advertisement1,cal,TicketType.KID);
+        });
+
+    }
+    @Test
+    public void buyTicketWithThrow(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -100);
+
+        Assertions.assertThrows(IllegalStateException.class, ()->{
+            service.buyTicket(user,advertisement1,cal);
+        });
+
+    }
+    @Test
+    public void getTicketHistory(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+
+        service.buyTicket(user,advertisement1,cal);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        Assertions.assertTrue(tickets.size() > 0);
+    }
+    @Test
+    public void buyTicketWithCalendarAndDiscount(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Discount.setDiscount(TicketType.KID, 0.8f);
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+
+        service.buyTicket(user,advertisement1,cal,TicketType.KID);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        Assertions.assertTrue(tickets.size() > 0);
+
+        Assertions.assertEquals(tickets.get(0).getPrice(), advertisement1.getPrice()*Discount.getDiscount(TicketType.KID));
+    }
+    @Test
+    public void buyTicketWithCalendar(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+
+        service.buyTicket(user,advertisement1,cal);
+
+        List<Ticket> ticketHistory = service.getTicketHistory(user);
+
+        Assertions.assertTrue(ticketHistory.size() > 0);
+
+        Assertions.assertEquals(ticketHistory.get(0).getPrice(), advertisement1.getPrice());
+
+    }
+    @Test
+    public void removeTicket(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        service.buyTicket(user, advertisement1);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        Assertions.assertTrue(tickets.size()>0);
+
+        service.removeTicket(tickets.get(0).getId());
+
+        Assertions.assertTrue(service.getTicketHistory(user).size()==0);
+    }
+    @Test
+    public void validateTicket(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        service.buyTicket(user, advertisement1);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        Assertions.assertTrue(service.validateTicket(tickets.get(0)));
+    }
+    @Test
+    public void validateTicketWithInvalidDate(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 10);
+
+        service.buyTicket(user,advertisement1,cal);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        Assertions.assertFalse(service.validateTicket(tickets.get(0)));
+    }
+    @Test
+    public  void exitZoo(){
+        User user = new User(1L, "", false, new Date(), "");
+        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+
+        service.buyTicket(user, advertisement1);
+
+        List<Ticket> tickets = service.getTicketHistory(user);
+
+        service.exitZoo(tickets.get(0).getId());
+
+        Assertions.assertFalse(tickets.get(0).getIsTicketActive());
+    }
 
 
 

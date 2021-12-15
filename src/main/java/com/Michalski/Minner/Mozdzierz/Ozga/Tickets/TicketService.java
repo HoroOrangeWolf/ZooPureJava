@@ -3,7 +3,6 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -23,10 +22,8 @@ public class TicketService {
     }
 
     public void buyTicket(@NotNull User user,@NotNull Advertisement advertisement, @NotNull Calendar date, TicketType type){
-
-        Date dateNow = new Date();
-
-        if(date.before(dateNow))
+        Date calendar = Calendar.getInstance().getTime();
+        if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
         ticketRepository.save(new Ticket(user, advertisement, date, new Path(advertisement.getSections()),advertisement.getPrice()*Discount.getDiscount(type)));
@@ -34,10 +31,8 @@ public class TicketService {
 
 
     public void buyTicket(@NotNull User user,@NotNull Advertisement advertisement, @NotNull Calendar date){
-
-        Date dateNow = new Date();
-
-        if(date.before(dateNow))
+        Date calendar = Calendar.getInstance().getTime();
+        if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
         ticketRepository.save(new Ticket(user, advertisement, date, new Path(advertisement.getSections()),advertisement.getPrice()*Discount.getDiscount(TicketType.ADULT)));
@@ -48,7 +43,7 @@ public class TicketService {
     }
 
     public void removeTicket(Long id){
-        advertisementRepository.removeById(id);
+        ticketRepository.removeById(id);
     }
 
     public boolean validateTicket(@NotNull Ticket ticket){

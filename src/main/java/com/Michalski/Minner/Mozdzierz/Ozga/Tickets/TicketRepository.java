@@ -42,7 +42,7 @@ public class TicketRepository implements Repository<Ticket> {
         ticketHistory.setDate(element.getDate());
         ticketHistory.setUser(element.getUser());
         ticketHistory.setPrice(element.getPrice());
-        ticketHistory.setAdvertisement(element.getAdvertisement());
+        ticketHistory.setPromotion(element.getPromotion());
     }
 
     @Override

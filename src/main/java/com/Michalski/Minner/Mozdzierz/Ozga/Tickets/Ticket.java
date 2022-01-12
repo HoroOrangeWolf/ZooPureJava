@@ -4,8 +4,8 @@ import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -18,20 +18,20 @@ public class Ticket {
     //klucz obcy User
     private User user;
 
-    private Advertisement advertisement;
+    private Promotion promotion;
 
     private Calendar date;
 
     private Path path;
-
-    private Float price;
+    //Poprawić na big decimal <<dokładonośc>>
+    private BigDecimal price;
 
     private Boolean isTicketValidate = false;
     private Boolean isTicketActive = true;
 
-    public Ticket(User user, Advertisement advertisement, Calendar date, Path path, Float price) {
+    public Ticket(User user, Promotion promotion, Calendar date, Path path, BigDecimal price) {
         this.user = user;
-        this.advertisement = advertisement;
+        this.promotion = promotion;
         this.date = date;
         this.path = path;
         this.price = price;

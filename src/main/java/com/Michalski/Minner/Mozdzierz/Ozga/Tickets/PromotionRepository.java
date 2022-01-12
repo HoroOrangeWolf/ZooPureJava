@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class AdvertisementRepository implements Repository<Advertisement> {
+public class PromotionRepository implements Repository<Promotion> {
 
-    private static final List<Advertisement> repo = new ArrayList<>();
+    private static final List<Promotion> repo = new ArrayList<>();
     private static long lastId = 1;
 
     private static long getNextId(){
@@ -22,26 +22,26 @@ public class AdvertisementRepository implements Repository<Advertisement> {
     }
 
     @Override
-    public void save(@org.jetbrains.annotations.NotNull Advertisement element) {
+    public void save(@org.jetbrains.annotations.NotNull Promotion element) {
         element.setId(getNextId());
         repo.add(element);
     }
 
     @Override
-    public void update(Advertisement element) {
-        Optional<Advertisement> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
+    public void update(Promotion element) {
+        Optional<Promotion> first = repo.stream().filter(f -> Objects.equals(f.getId(), element.getId())).findFirst();
 
         if(first.isEmpty())
             return;
 
-        Advertisement advertisement = first.get();
+        Promotion promotion = first.get();
 
-        advertisement.setPrice(element.getPrice());
-        advertisement.setSections(element.getSections());
+        promotion.setPrice(element.getPrice());
+        promotion.setSections(element.getSections());
     }
 
     @Override
-    public void remove(Advertisement element) {
+    public void remove(Promotion element) {
         repo.removeIf(f -> Objects.equals(f.getId(), element.getId()));
     }
 
@@ -51,12 +51,12 @@ public class AdvertisementRepository implements Repository<Advertisement> {
     }
 
     @Override
-    public List<Advertisement> getByPredictor(Predicate<? super Advertisement> predicate) {
+    public List<Promotion> getByPredictor(Predicate<? super Promotion> predicate) {
         return repo.stream().filter(predicate).toList();
     }
 
     @Override
-    public Optional<Advertisement> getById(Long id) {
+    public Optional<Promotion> getById(Long id) {
         return repo.stream().filter(f -> Objects.equals(f.getId(), id)).findFirst();
     }
 }

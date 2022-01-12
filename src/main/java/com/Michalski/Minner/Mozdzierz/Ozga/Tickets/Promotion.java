@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Advertisement {
+public class Promotion {
 
     private Long id;
     private Float price;

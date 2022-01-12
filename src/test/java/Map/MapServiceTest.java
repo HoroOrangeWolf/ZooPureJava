@@ -4,7 +4,7 @@ import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapService;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.PathElement;
-import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Advertisement;
+import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Promotion;
 import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Ticket;
 import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.TicketRepository;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
@@ -30,13 +30,13 @@ public class MapServiceTest {
 
         list = Arrays.asList(section1, section2, section3, section4);
 
-        Advertisement advertisement = new Advertisement(1L, 255.f, list);
+        Promotion promotion = new Promotion(1L, 255.f, list);
 
         User user = new User(1L, "Test1", false, new Date(), "");
 
         Path path = new Path(list);
 
-        ticket = new Ticket(user, advertisement, Calendar.getInstance(), path, advertisement.getPrice());
+        ticket = new Ticket(user, promotion, Calendar.getInstance(), path, promotion.getPrice());
 
         repository.save(ticket);
 
@@ -50,16 +50,16 @@ public class MapServiceTest {
     @Test
     public void getNext(){
         PathElement element = service.getNext(ticket.getId());
-        Optional<Section> first = list.stream().findFirst();
+        Section st = list.get(0);
 
-        Assertions.assertTrue(first.isPresent());
+        //Assertions.assertTrue(first.isPresent());
 
-        Assertions.assertEquals(element.getSection(), first.get());
+        Assertions.assertEquals(element.getSection(), st);
     }
 
     @Test
     public void getNextAll(){
-        for(int s = 0; s < 4; s++) {
+        for(int s = 0; s < list.size(); s++) {
             Assertions.assertNotNull(service.getNext(ticket.getId()));
         }
 
@@ -68,7 +68,7 @@ public class MapServiceTest {
 
     @Test
     public void getPrev(){
-        for(int s = 0; s < 4; s++) {
+        for(int s = 0; s < list.size(); s++) {
             Assertions.assertNotNull(service.getNext(ticket.getId()));
         }
         List<PathElement> elements = ticket.getPath().getPathElements();
@@ -175,7 +175,5 @@ public class MapServiceTest {
         Assertions.assertFalse(pathElements.contains(elements.get(elements.size() - 1)));
 
     }
-
-
 
 }

@@ -1,7 +1,7 @@
 package Ticket;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
-import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Advertisement;
+import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Promotion;
 import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Ticket;
 import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.TicketRepository;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
@@ -29,9 +29,9 @@ public class TicketRepositoryTest {
     @Test
     public void addTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
 
         repository.save(ticket);
 
@@ -41,12 +41,12 @@ public class TicketRepositoryTest {
     @Test
     public void updateTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
         repository.save(ticket);
 
-        Ticket ticket2 = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 15.f);
+        Ticket ticket2 = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 15.f);
         ticket2.setId(ticket.getId());
 
         repository.update(ticket2);
@@ -57,9 +57,9 @@ public class TicketRepositoryTest {
     @Test
     public void removeTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());
@@ -72,9 +72,9 @@ public class TicketRepositoryTest {
     @Test
     public void removeTicketById(){
         User user = new User(1L, "", false, new Date(), "");
-        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());
@@ -87,9 +87,9 @@ public class TicketRepositoryTest {
     @Test
     public void getTicketById(){
         User user = new User(1L, "", false, new Date(), "");
-        Advertisement advertisement1 = new Advertisement(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, advertisement1, Calendar.getInstance(), new Path(advertisement1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());

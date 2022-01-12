@@ -13,6 +13,7 @@ import java.util.Optional;
 public class MapService {
     private TicketService service = new TicketService();
 
+    //zamienić id na ticket
     public PathElement getNext(Long id){
         Optional<Ticket> ticketById = service.getTicketById(id);
 

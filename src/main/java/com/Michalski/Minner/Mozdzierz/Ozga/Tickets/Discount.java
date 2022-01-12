@@ -1,12 +1,14 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 
+import java.math.BigDecimal;
+
 public class Discount {
 
-    private static Float adult = 0.f, kid = 0.f, student = 0.f;
+    private static BigDecimal adult = new BigDecimal("0."), kid = new BigDecimal("0."), student = new BigDecimal("0.");
 
     private Discount(){}
 
-    public static void setDiscount(TicketType type, Float discountPercentage){
+    public static void setDiscount(TicketType type, BigDecimal discountPercentage){
 
         switch (type){
             case STUDENT -> student = discountPercentage;
@@ -15,11 +17,12 @@ public class Discount {
         }
     }
 
-    public static float getDiscount(TicketType type){
+    public static BigDecimal getDiscount(TicketType type){
+        BigDecimal decimal = new BigDecimal(1);
         return switch (type){
-            case KID -> 1.0f - kid;
-            case STUDENT -> 1.0f - student;
-            case ADULT -> 1.0f - adult;
+            case KID -> decimal.subtract(kid);
+            case STUDENT -> decimal.subtract(student);
+            case ADULT -> decimal.subtract(adult);
         };
     }
 

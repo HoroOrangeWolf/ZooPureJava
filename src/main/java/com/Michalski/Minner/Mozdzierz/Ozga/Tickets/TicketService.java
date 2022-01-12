@@ -9,33 +9,33 @@ import java.util.*;
 
 @NoArgsConstructor
 public class TicketService {
-    private final AdvertisementRepository advertisementRepository = new AdvertisementRepository();
+    private final PromotionRepository advertisementRepository = new PromotionRepository();
     private final TicketRepository ticketRepository = new TicketRepository();
 
-    public void buyTicket(User user, Advertisement ticket){
+    public void buyTicket(User user, Promotion ticket){
         ticketRepository.save(new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(TicketType.ADULT)));
     }
 
-    public void buyTicket(User user, Advertisement ticket, TicketType type){
+    public void buyTicket(User user, Promotion ticket, TicketType type){
         Ticket ticket1 = new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(type));
         ticketRepository.save(ticket1);
     }
 
-    public void buyTicket(@NotNull User user,@NotNull Advertisement advertisement, @NotNull Calendar date, TicketType type){
+    public void buyTicket(@NotNull User user, @NotNull Promotion promotion, @NotNull Calendar date, TicketType type){
         Date calendar = Calendar.getInstance().getTime();
         if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
-        ticketRepository.save(new Ticket(user, advertisement, date, new Path(advertisement.getSections()),advertisement.getPrice()*Discount.getDiscount(type)));
+        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice()*Discount.getDiscount(type)));
     }
 
 
-    public void buyTicket(@NotNull User user,@NotNull Advertisement advertisement, @NotNull Calendar date){
+    public void buyTicket(@NotNull User user, @NotNull Promotion promotion, @NotNull Calendar date){
         Date calendar = Calendar.getInstance().getTime();
         if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
-        ticketRepository.save(new Ticket(user, advertisement, date, new Path(advertisement.getSections()),advertisement.getPrice()*Discount.getDiscount(TicketType.ADULT)));
+        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice()*Discount.getDiscount(TicketType.ADULT)));
     }
 
     public List<Ticket> getTicketHistory(User user){

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class TicketServiceTest {
     @Test
     public void buyTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
 
@@ -43,9 +44,9 @@ public class TicketServiceTest {
     @Test
     public void buyTicketWithDiscount(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Discount.setDiscount(TicketType.KID, 0.8f);
+        Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
 
         service.buyTicket(user, promotion1, TicketType.KID);
 
@@ -53,14 +54,14 @@ public class TicketServiceTest {
 
         Assertions.assertTrue(ticketHistory.size() > 0);
 
-        Assertions.assertEquals(ticketHistory.get(0).getPrice(), promotion1.getPrice()*Discount.getDiscount(TicketType.KID));
+        Assertions.assertEquals(ticketHistory.get(0).getPrice(), promotion1.getPrice().multiply(Discount.getDiscount(TicketType.KID)));
     }
     @Test
     public void buyTicketWithThrowAndDiscount(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Discount.setDiscount(TicketType.KID, 0.8f);
+        Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -100);
@@ -73,7 +74,7 @@ public class TicketServiceTest {
     @Test
     public void buyTicketWithThrow(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -100);
@@ -86,7 +87,7 @@ public class TicketServiceTest {
     @Test
     public void getTicketHistory(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
@@ -100,9 +101,9 @@ public class TicketServiceTest {
     @Test
     public void buyTicketWithCalendarAndDiscount(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Discount.setDiscount(TicketType.KID, 0.8f);
+        Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
@@ -113,12 +114,12 @@ public class TicketServiceTest {
 
         Assertions.assertTrue(tickets.size() > 0);
 
-        Assertions.assertEquals(tickets.get(0).getPrice(), promotion1.getPrice()*Discount.getDiscount(TicketType.KID));
+        Assertions.assertEquals(tickets.get(0).getPrice(), promotion1.getPrice().multiply(Discount.getDiscount(TicketType.KID)));
     }
     @Test
     public void buyTicketWithCalendar(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
@@ -135,7 +136,7 @@ public class TicketServiceTest {
     @Test
     public void removeTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
 
@@ -150,7 +151,7 @@ public class TicketServiceTest {
     @Test
     public void validateTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
 
@@ -161,7 +162,7 @@ public class TicketServiceTest {
     @Test
     public void validateTicketWithInvalidDate(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
         //zmienić cal na calendar
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 10);
@@ -175,7 +176,7 @@ public class TicketServiceTest {
     @Test
     public  void exitZoo(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
 

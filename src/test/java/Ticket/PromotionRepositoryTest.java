@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class PromotionRepositoryTest {
 
     @Test
     public void addAdvertisement(){
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("255."), new ArrayList<>());
 
         repository.save(promotion1);
 
@@ -31,11 +32,11 @@ public class PromotionRepositoryTest {
 
     @Test
     public void updateAdvertisement(){
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         repository.save(promotion1);
 
-        Promotion promotion2 = new Promotion(promotion1.getId(), 450.f, new ArrayList<>());
+        Promotion promotion2 = new Promotion(promotion1.getId(), new BigDecimal("450."), new ArrayList<>());
 
         repository.update(promotion2);
 
@@ -44,7 +45,7 @@ public class PromotionRepositoryTest {
 
     @Test
     public void removeAdvertisement(){
-        Promotion promotion1 = new Promotion(1L, 120.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
 
@@ -55,7 +56,7 @@ public class PromotionRepositoryTest {
 
     @Test
     public void removeAdvertisementById(){
-        Promotion promotion1 = new Promotion(1L, 120.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
 
@@ -66,7 +67,7 @@ public class PromotionRepositoryTest {
 
     @Test
     public void getAdvertisementById(){
-        Promotion promotion1 = new Promotion(1L, 120.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
 

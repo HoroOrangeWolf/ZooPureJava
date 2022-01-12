@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class MapServiceTest {
@@ -30,7 +31,7 @@ public class MapServiceTest {
 
         list = Arrays.asList(section1, section2, section3, section4);
 
-        Promotion promotion = new Promotion(1L, 255.f, list);
+        Promotion promotion = new Promotion(1L, new BigDecimal("255."), list);
 
         User user = new User(1L, "Test1", false, new Date(), "");
 

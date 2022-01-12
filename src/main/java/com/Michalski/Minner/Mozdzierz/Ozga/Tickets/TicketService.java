@@ -13,11 +13,11 @@ public class TicketService {
     private final TicketRepository ticketRepository = new TicketRepository();
 
     public void buyTicket(User user, Promotion ticket){
-        ticketRepository.save(new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(TicketType.ADULT)));
+        ticketRepository.save(new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice().multiply(Discount.getDiscount(TicketType.ADULT))));
     }
 
     public void buyTicket(User user, Promotion ticket, TicketType type){
-        Ticket ticket1 = new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice()*Discount.getDiscount(type));
+        Ticket ticket1 = new Ticket(user, ticket, Calendar.getInstance(), new Path(ticket.getSections()),ticket.getPrice().multiply(Discount.getDiscount(type)));
         ticketRepository.save(ticket1);
     }
 
@@ -26,7 +26,7 @@ public class TicketService {
         if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
-        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice()*Discount.getDiscount(type)));
+        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice().multiply(Discount.getDiscount(type))));
     }
 
 
@@ -35,7 +35,7 @@ public class TicketService {
         if(date.getTime().getTime() < calendar.getTime())
             throw new IllegalStateException("Can't buy ticket invalid date");
 
-        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice()*Discount.getDiscount(TicketType.ADULT)));
+        ticketRepository.save(new Ticket(user, promotion, date, new Path(promotion.getSections()), promotion.getPrice().multiply(Discount.getDiscount(TicketType.ADULT))));
     }
 
     public List<Ticket> getTicketHistory(User user){

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,9 +30,9 @@ public class TicketRepositoryTest {
     @Test
     public void addTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
 
         repository.save(ticket);
 
@@ -41,12 +42,12 @@ public class TicketRepositoryTest {
     @Test
     public void updateTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()),  new BigDecimal("0."));
         repository.save(ticket);
 
-        Ticket ticket2 = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 15.f);
+        Ticket ticket2 = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("15."));
         ticket2.setId(ticket.getId());
 
         repository.update(ticket2);
@@ -57,9 +58,9 @@ public class TicketRepositoryTest {
     @Test
     public void removeTicket(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());
@@ -72,9 +73,9 @@ public class TicketRepositoryTest {
     @Test
     public void removeTicketById(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());
@@ -87,9 +88,9 @@ public class TicketRepositoryTest {
     @Test
     public void getTicketById(){
         User user = new User(1L, "", false, new Date(), "");
-        Promotion promotion1 = new Promotion(1L, 500.f, new ArrayList<>());
+        Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
-        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), 0.f);
+        Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
         repository.save(ticket);
 
         Assertions.assertTrue(repository.getById(ticket.getId()).isPresent());

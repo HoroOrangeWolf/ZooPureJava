@@ -3,6 +3,7 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class Promotion {
 
     private Long id;
-    private Float price;
+    private BigDecimal price;
 
     private List<Section> sections = new ArrayList<>();
 

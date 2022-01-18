@@ -29,7 +29,7 @@ public class TicketServiceTest {
 
     @Test
     public void buyTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
@@ -43,7 +43,7 @@ public class TicketServiceTest {
 
     @Test
     public void buyTicketWithDiscount(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
@@ -58,7 +58,7 @@ public class TicketServiceTest {
     }
     @Test
     public void buyTicketWithThrowAndDiscount(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
@@ -73,7 +73,7 @@ public class TicketServiceTest {
     }
     @Test
     public void buyTicketWithThrow(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
@@ -86,7 +86,7 @@ public class TicketServiceTest {
     }
     @Test
     public void getTicketHistory(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
@@ -100,7 +100,7 @@ public class TicketServiceTest {
     }
     @Test
     public void buyTicketWithCalendarAndDiscount(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Discount.setDiscount(TicketType.KID, new BigDecimal("0.8"));
@@ -118,7 +118,7 @@ public class TicketServiceTest {
     }
     @Test
     public void buyTicketWithCalendar(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Calendar cal = Calendar.getInstance();
@@ -135,7 +135,7 @@ public class TicketServiceTest {
     }
     @Test
     public void removeTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
@@ -150,7 +150,7 @@ public class TicketServiceTest {
     }
     @Test
     public void validateTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);
@@ -161,7 +161,7 @@ public class TicketServiceTest {
     }
     @Test
     public void validateTicketWithInvalidDate(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
         //zmienić cal na calendar
         Calendar cal = Calendar.getInstance();
@@ -175,7 +175,7 @@ public class TicketServiceTest {
     }
     @Test
     public  void exitZoo(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         service.buyTicket(user, promotion1);

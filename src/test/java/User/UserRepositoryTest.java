@@ -22,7 +22,7 @@ public class UserRepositoryTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
         repository.save(u1);
         Assertions.assertTrue(repository.getById(u1.getId()).isPresent());
     }
@@ -32,11 +32,13 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
-        User u2 = new User(u1.getId(),"zmiana hasla",true, date,"user@test.com");
+        User u2 = new User("zmiana hasla",true, date,"user@test.com");
+
+        u2.setId(u1.getId());
 
         repository.update(u2);
 
@@ -48,7 +50,7 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
@@ -63,7 +65,7 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
@@ -77,7 +79,7 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
@@ -93,7 +95,7 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
@@ -109,11 +111,11 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
 
         repository.save(u1);
 
-        User u2 = new User(2L,"siema",false, date,"user@test.com");
+        User u2 = new User("siema",false, date,"user@test.com");
 
         repository.save(u2);
 
@@ -126,7 +128,7 @@ public class UserRepositoryTest {
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
 
-        User u1 = new User(1L,"siema",true, date,"user@test.com");
+        User u1 = new User("siema",true, date,"user@test.com");
 
         repository.save(u1);
 

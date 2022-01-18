@@ -6,7 +6,6 @@ import java.util.Date;
 
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -23,4 +22,21 @@ public class User {
 
     private String email;
 
+    private String phoneNumber;
+
+    private Boolean isEmailNotification = false;
+
+    private Boolean isSMSNotification = false;
+
+    private Boolean isAppNotification = false;
+
+    private Boolean isWebNotification = false;
+
+
+    public User(String password, boolean isBokManager, Date lastLogin, String email) {
+        this.password = password;
+        this.isBokManager = isBokManager;
+        this.lastLogin = lastLogin;
+        this.email = email;
+    }
 }

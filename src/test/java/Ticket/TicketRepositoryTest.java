@@ -29,7 +29,7 @@ public class TicketRepositoryTest {
 
     @Test
     public void addTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
@@ -41,7 +41,7 @@ public class TicketRepositoryTest {
 
     @Test
     public void updateTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()),  new BigDecimal("0."));
@@ -57,7 +57,7 @@ public class TicketRepositoryTest {
 
     @Test
     public void removeTicket(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
@@ -72,7 +72,7 @@ public class TicketRepositoryTest {
 
     @Test
     public void removeTicketById(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));
@@ -87,7 +87,7 @@ public class TicketRepositoryTest {
 
     @Test
     public void getTicketById(){
-        User user = new User(1L, "", false, new Date(), "");
+        User user = new User( "", false, new Date(), "");
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         Ticket ticket = new Ticket(user, promotion1, Calendar.getInstance(), new Path(promotion1.getSections()), new BigDecimal("0."));

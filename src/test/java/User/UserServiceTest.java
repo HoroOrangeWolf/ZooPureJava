@@ -28,7 +28,7 @@ public class UserServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
         service.addUser(u1);
 
         Optional<User> user = service.getUserByEmail(u1.getEmail());
@@ -42,8 +42,8 @@ public class UserServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
-        User u2 = new User(1L,"Ryszard",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
+        User u2 = new User("Ryszard",false, date,"user@test.com");
 
         service.addUser(u1);
 
@@ -58,7 +58,7 @@ public class UserServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
         service.addUser(u1);
 
         Optional<User> user = service.getUserByEmail(u1.getEmail());
@@ -75,9 +75,12 @@ public class UserServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",false, date,"user@test.com");
+        User u1 = new User("siema",false, date,"user@test.com");
         service.addUser(u1);
-        User u2 = new User(u1.getId(),"siemaaaaa",false, date,"user@test.com");
+        User u2 = new User("siemaaaaa",false, date,"user@test.com");
+
+        u2.setId(u1.getId());
+
         service.updateUser(u2);
         Assertions.assertEquals(u2,u1);
     }
@@ -85,7 +88,7 @@ public class UserServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         Date date = cal.getTime();
-        User u1 = new User(1L,"siema",true, date,"user@test.com");
+        User u1 = new User("siema",true, date,"user@test.com");
         service.addUser(u1);
 
         Assertions.assertTrue(service.isUserBok(u1.getId()));

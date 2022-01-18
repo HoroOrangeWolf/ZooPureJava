@@ -33,7 +33,7 @@ public class MapServiceTest {
 
         Promotion promotion = new Promotion(1L, new BigDecimal("255."), list);
 
-        User user = new User(1L, "Test1", false, new Date(), "");
+        User user = new User("Test1", false, new Date(), "");
 
         Path path = new Path(list);
 

@@ -6,8 +6,8 @@ public class WebNotifierDecorator extends BaseDecorator{
     }
 
     @Override
-    public void sendNotification() {
-        notification.sendNotification();
-        System.out.println("Wysłano WEB do: " + super.getEmail());
+    public void sendNotification(String text) {
+        notification.sendNotification(text);
+        System.out.println("Wyslano notification na przeglądarke dla użytwkonika: " + notification.getUser().getEmail());
     }
 }

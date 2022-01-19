@@ -10,17 +10,13 @@ public class NotificationImp implements Notification {
     private User user;
 
     @Override
-    public void sendNotification() {
+    public void sendNotification(String text) {
 
     }
 
     @Override
-    public String getEmail() {
-        return user.getEmail();
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public String getPhoneNumber() {
-        return user.getPhoneNumber();
-    }
 }

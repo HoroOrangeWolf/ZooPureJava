@@ -18,11 +18,13 @@ public class Path {
 
     public Path(List<Section> sections) {
         List<PathElement> elements = new ArrayList<>();
+
         for(Section section : sections)
             elements.add(new PathElement(section));
 
         pathElements = elements;
     }
+
 
 
 }

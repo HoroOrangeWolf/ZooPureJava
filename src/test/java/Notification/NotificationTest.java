@@ -16,16 +16,16 @@ public class NotificationTest {
         Notification notification = new SMSNotifierDecorator(imp);
 
         System.out.println("----------");
-        notification.sendNotification();
+        notification.sendNotification("t");
         System.out.println("----------");
         notification = new WebNotifierDecorator(notification);
-        notification.sendNotification();
+        notification.sendNotification("t");
         System.out.println("----------");
         notification = new EmailNotifierDecorator(notification);
-        notification.sendNotification();
+        notification.sendNotification("t");
         System.out.println("----------");
         notification = new AppNotifierDecorator(notification);
-        notification.sendNotification();
+        notification.sendNotification("t");
         System.out.println("----------");
 
     }

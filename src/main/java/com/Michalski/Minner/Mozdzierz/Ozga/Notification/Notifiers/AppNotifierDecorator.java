@@ -6,8 +6,8 @@ public class AppNotifierDecorator extends BaseDecorator{
     }
 
     @Override
-    public void sendNotification() {
-        notification.sendNotification();
-        System.out.println("Wysłano App do: " + super.getEmail());
+    public void sendNotification(String text) {
+        System.out.println("Wyslano notification na aplikacje: " + notification.getUser().getEmail());
+        notification.sendNotification(text);
     }
 }

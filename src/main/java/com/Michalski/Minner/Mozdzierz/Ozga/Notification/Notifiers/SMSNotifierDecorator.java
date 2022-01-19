@@ -6,8 +6,8 @@ public class SMSNotifierDecorator extends BaseDecorator{
     }
 
     @Override
-    public void sendNotification() {
-        notification.sendNotification();
-        System.out.println("Wysłano SMS do: " + super.getEmail());
+    public void sendNotification(String text) {
+        notification.sendNotification(text);
+        System.out.println("Wyslano sms na: " + notification.getUser().getPhoneNumber() + " ");
     }
 }

@@ -11,11 +11,11 @@ public class BaseDecorator implements Subscriber {
 
     @Override
     public void sendMessage(String text) {
-
+        sender.sendMessage(text);
     }
 
     @Override
     public User getUser() {
-        return (User) sender;
+        return sender.getUser();
     }
 }

@@ -16,5 +16,6 @@ public class SMSNotifierDecorator extends BaseDecorator{
     public void sendSMS(String text)
     {
         System.out.println("Przez SMS: " + text);
+        super.getUser().setSMSNotificationReceived(true);
     }
 }

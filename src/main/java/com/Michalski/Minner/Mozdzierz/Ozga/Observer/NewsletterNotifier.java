@@ -6,14 +6,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NewsletterNotifier {
-    private static final List<Subscriber> subscriberMap = new LinkedList<>();
+    private  final List<Subscriber> subscriberMap = new LinkedList<>();
 
-    public static void addSubscriber(Subscriber subscriber){
+    public void addSubscriber(Subscriber subscriber){
         subscriberMap.add(subscriber);
     }
 
     public void removeSubscriber(Long id){
         subscriberMap.removeIf(f->f.getUser().getId() == id);
+    }
+
+    public List<Subscriber> getSubscribers(){
+        return subscriberMap;
     }
 
     public void notifySubscribers(String informationText){

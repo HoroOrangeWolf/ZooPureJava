@@ -14,5 +14,6 @@ public class WebNotifierDecorator extends BaseDecorator{
     public void sendWebNotification(String text)
     {
         System.out.println("Na aplikacje webowa: " + text);
+        super.getUser().setWebNotificationReceived(true);
     }
 }

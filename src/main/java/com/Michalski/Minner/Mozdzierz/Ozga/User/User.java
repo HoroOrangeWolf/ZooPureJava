@@ -25,13 +25,13 @@ public class User implements Subscriber {
 
     private String phoneNumber;
 
-    private Boolean isEmailNotification = false;
+    private Boolean isEmailNotificationReceived = false;
 
-    private Boolean isSMSNotification = false;
+    private Boolean isSMSNotificationReceived = false;
 
-    private Boolean isAppNotification = false;
+    private Boolean isAppNotificationReceived = false;
 
-    private Boolean isWebNotification = false;
+    private Boolean isWebNotificationReceived = false;
 
 
     public User(String password, boolean isBokManager, Date lastLogin, String email) {
@@ -41,7 +41,37 @@ public class User implements Subscriber {
         this.email = email;
     }
 
+    public Boolean getEmailNotificationReceived() {
+        return isEmailNotificationReceived;
+    }
 
+    public void setEmailNotificationReceived(Boolean emailNotificationReceived) {
+        isEmailNotificationReceived = emailNotificationReceived;
+    }
+
+    public Boolean getSMSNotificationReceived() {
+        return isSMSNotificationReceived;
+    }
+
+    public void setSMSNotificationReceived(Boolean SMSNotificationReceived) {
+        isSMSNotificationReceived = SMSNotificationReceived;
+    }
+
+    public Boolean getAppNotificationReceived() {
+        return isAppNotificationReceived;
+    }
+
+    public void setAppNotificationReceived(Boolean appNotificationReceived) {
+        isAppNotificationReceived = appNotificationReceived;
+    }
+
+    public Boolean getWebNotificationReceived() {
+        return isWebNotificationReceived;
+    }
+
+    public void setWebNotificationReceived(Boolean webNotificationReceived) {
+        isWebNotificationReceived = webNotificationReceived;
+    }
 
     @Override
     public void sendMessage(String text) {

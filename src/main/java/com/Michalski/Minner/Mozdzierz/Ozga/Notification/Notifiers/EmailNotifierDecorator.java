@@ -15,6 +15,7 @@ public class EmailNotifierDecorator extends BaseDecorator{
     public void sendEmail(String text)
     {
         System.out.println("Na Email: " + text);
+        super.getUser().setEmailNotificationReceived(true);
     }
 
 }

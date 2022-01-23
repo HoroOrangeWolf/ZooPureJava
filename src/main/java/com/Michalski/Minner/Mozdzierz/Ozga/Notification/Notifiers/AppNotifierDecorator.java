@@ -15,5 +15,6 @@ public class AppNotifierDecorator extends BaseDecorator{
     public void sendNotificationToApplication(String text)
     {
         System.out.println("Na telefon: " + text);
+        super.getUser().setAppNotificationReceived(true);
     }
 }

@@ -1,13 +1,20 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Notification.Notifiers;
 
 public class SMSNotifierDecorator extends BaseDecorator{
-    public SMSNotifierDecorator(Notification notification) {
-        super(notification);
+
+
+    public SMSNotifierDecorator(Subscriber sender) {
+        super(sender);
     }
 
     @Override
-    public void sendNotification(String text) {
-        notification.sendNotification(text);
-        System.out.println("Wyslano sms na: " + notification.getUser().getPhoneNumber() + " ");
+    public void sendMessage(String text) {
+        super.sendMessage(text);
+        sendSMS(text);
+    }
+
+    public void sendSMS(String text)
+    {
+        System.out.println("Przez SMS: " + text);
     }
 }

@@ -1,5 +1,6 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.User;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.Notification.Notifiers.Subscriber;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class User {
+public class User implements Subscriber {
 
     private Long id;
 
@@ -38,5 +39,17 @@ public class User {
         this.isBokManager = isBokManager;
         this.lastLogin = lastLogin;
         this.email = email;
+    }
+
+
+
+    @Override
+    public void sendMessage(String text) {
+
+    }
+
+    @Override
+    public User getUser() {
+        return this;
     }
 }

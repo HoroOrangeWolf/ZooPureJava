@@ -4,18 +4,18 @@ import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class BaseDecorator implements Notification {
+public class BaseDecorator implements Subscriber {
 
-    protected Notification notification;
+    private final Subscriber sender;
+
 
     @Override
-    public void sendNotification(String text) {
+    public void sendMessage(String text) {
 
     }
 
     @Override
     public User getUser() {
-        return notification.getUser();
+        return (User) sender;
     }
-
 }

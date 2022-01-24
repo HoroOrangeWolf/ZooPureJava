@@ -22,7 +22,7 @@ public class PromotionRepositoryTest {
 
 
     @Test
-    public void addAdvertisement(){
+    public void addPromotion(){
         Promotion promotion1 = new Promotion(1L, new BigDecimal("255."), new ArrayList<>());
 
         repository.save(promotion1);
@@ -31,7 +31,7 @@ public class PromotionRepositoryTest {
     }
 
     @Test
-    public void updateAdvertisement(){
+    public void updatePromotion(){
         Promotion promotion1 = new Promotion(1L, new BigDecimal("500."), new ArrayList<>());
 
         repository.save(promotion1);
@@ -44,7 +44,7 @@ public class PromotionRepositoryTest {
     }
 
     @Test
-    public void removeAdvertisement(){
+    public void removePromotion(){
         Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
@@ -55,7 +55,7 @@ public class PromotionRepositoryTest {
     }
 
     @Test
-    public void removeAdvertisementById(){
+    public void removePromotionById(){
         Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
@@ -66,16 +66,16 @@ public class PromotionRepositoryTest {
     }
 
     @Test
-    public void getAdvertisementById(){
+    public void getPromotionById(){
         Promotion promotion1 = new Promotion(1L, new BigDecimal("120."), new ArrayList<>());
 
         repository.save(promotion1);
 
-        Optional<Promotion> advertisement = repository.getById(promotion1.getId());
+        Optional<Promotion> Promotion = repository.getById(promotion1.getId());
 
-        Assertions.assertTrue(advertisement.isPresent());
+        Assertions.assertTrue(Promotion.isPresent());
 
-        Assertions.assertEquals(promotion1, advertisement.get());
+        Assertions.assertEquals(promotion1, Promotion.get());
     }
 
 }

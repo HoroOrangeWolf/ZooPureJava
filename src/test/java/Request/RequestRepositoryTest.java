@@ -3,10 +3,14 @@ package Request;
 import com.Michalski.Minner.Mozdzierz.Ozga.Request.Request;
 import com.Michalski.Minner.Mozdzierz.Ozga.Request.RequestRepository;
 import com.Michalski.Minner.Mozdzierz.Ozga.Request.Status;
+import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.Setter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class RequestRepositoryTest {
 
@@ -21,7 +25,12 @@ public class RequestRepositoryTest {
 
     @Test
     public void addRequest(){
-        Request req = new Request(1L, Status.NIEROZPATRZONY, "Tekst testowy request");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        Date date = cal.getTime();
+
+        User u1 = new User("siema",false, date,"user@test.com");
+        Request req = new Request("Tekst testowy request", u1);
 
         repository.save(req);
         Assertions.assertTrue(repository.getById(req.getId()).isPresent());
@@ -29,11 +38,17 @@ public class RequestRepositoryTest {
 
     @Test
     public void updateRequest(){
-        Request req = new Request(1L, Status.NIEROZPATRZONY, "Tekst testowy request nierozpatrzony");
+
+        User u1 = new User("siema",false, new Date(),"user@test.com");
+
+        Request req = new Request("Tekst testowy request nierozpatrzony", u1);
 
         repository.save(req);
 
-        Request req_update = new Request(1L, Status.ROZPATRZONY, "Tekst testowy request rozpatrzony update");
+        Request req_update = new Request( "Tekst testowy request rozpatrzony update", u1);
+
+        req_update.setStatus(Status.ROZPATRZONY);
+
         req_update.setId(req.getId());
         repository.update(req_update);
 
@@ -42,7 +57,9 @@ public class RequestRepositoryTest {
 
     @Test
     public void removeRequest(){
-        Request req = new Request(1L, Status.NIEROZPATRZONY, "Tekst testowy request nierozpatrzony");
+        User u1 = new User("siema",false, new Date(),"user@test.com");
+
+        Request req = new Request("Tekst testowy request nierozpatrzony", u1);
 
         repository.save(req);
 
@@ -55,7 +72,9 @@ public class RequestRepositoryTest {
 
     @Test
     public void removeRequestById(){
-        Request req = new Request(1L, Status.NIEROZPATRZONY, "Tekst testowy request nierozpatrzony");
+        User u1 = new User("siema",false, new Date(),"user@test.com");
+
+        Request req = new Request("Tekst testowy request nierozpatrzony", u1);
 
         repository.save(req);
 
@@ -68,7 +87,9 @@ public class RequestRepositoryTest {
 
     @Test
     public void getRequestById(){
-        Request req = new Request(1L, Status.NIEROZPATRZONY, "Tekst testowy request nierozpatrzony");
+        User u1 = new User("siema",false, new Date(),"user@test.com");
+
+        Request req = new Request("Tekst testowy request nierozpatrzony", u1);
 
         repository.save(req);
 

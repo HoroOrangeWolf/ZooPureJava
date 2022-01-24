@@ -1,10 +1,10 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.*;
 
 @NoArgsConstructor
 @EqualsAndHashCode
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -12,7 +12,16 @@ public class Request {
 
     private Long id;
 
-    private Status status;
+    private Status status = Status.NIEROZPATRZONY;
 
     private String text;
+
+    private User user;
+
+    private String answer;
+
+    public Request(String text, User user) {
+        this.text = text;
+        this.user = user;
+    }
 }

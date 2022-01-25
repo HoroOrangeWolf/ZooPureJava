@@ -1,5 +1,7 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
+
 import java.util.Optional;
 
 public class RequestService {
@@ -10,7 +12,13 @@ public class RequestService {
         requestRepository.save(request);
     }
 
-    public void updateRequest(Request request){
+    public void updateRequest(Request request, User bokUser){
+
+        if(!bokUser.isBokManager())
+            throw new IllegalStateException("User is not bok!");
+
+        if(request.getBokUser() == null || request.getBokUser().getId() != bokUser.getId())
+            throw new IllegalStateException("Current request is being operate by other BokUser");
 
         Optional<Request> byId = requestRepository.getById(request.getId());
 
@@ -26,7 +34,11 @@ public class RequestService {
 
     }
 
-    public Request getNextToView(){
+    public Request getNextToView(User bokUser){
+
+        if(!bokUser.isBokManager())
+            throw new IllegalStateException("User is not bok!");
+
         Optional<Request> request = requestRepository.getByPredictor(f -> f.getStatus() != Status.NIEROZPATRZONY).stream().findFirst();
         if(request.isEmpty())
             return null;

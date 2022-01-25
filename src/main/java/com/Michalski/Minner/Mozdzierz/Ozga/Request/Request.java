@@ -19,6 +19,8 @@ public class Request extends Notifier {
 
     private User user;
 
+    private User bokUser = null;
+
     private String answer;
 
     public Request(String text, User user) {

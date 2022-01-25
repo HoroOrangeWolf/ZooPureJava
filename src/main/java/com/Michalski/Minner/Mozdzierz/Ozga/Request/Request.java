@@ -1,5 +1,6 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.Observer.Notifier;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.*;
 
@@ -8,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Request {
+public class Request extends Notifier {
 
     private Long id;
 

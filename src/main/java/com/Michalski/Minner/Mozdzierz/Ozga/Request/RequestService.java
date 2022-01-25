@@ -2,6 +2,7 @@ package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class RequestService {
@@ -17,7 +18,7 @@ public class RequestService {
         if(!bokUser.isBokManager())
             throw new IllegalStateException("User is not bok!");
 
-        if(request.getBokUser() == null || request.getBokUser().getId() != bokUser.getId())
+        if(request.getBokUser() == null || !Objects.equals(request.getBokUser().getId(), bokUser.getId()))
             throw new IllegalStateException("Current request is being operate by other BokUser");
 
         Optional<Request> byId = requestRepository.getById(request.getId());

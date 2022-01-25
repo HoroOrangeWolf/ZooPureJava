@@ -128,17 +128,6 @@ public class RequestServiceTest {
         assertNull(nextToView);
     }
 
-    @Test
-    void updateRequestsNoBokUser(){
-
-        User user_bok = new User("czesc",true, new Date(),"user2@test.com");
-
-        Request nextToView = service.getNextToView(user_bok);
-
-        assertNull(nextToView);
-    }
-
-
 
     @Test
     void updateRequest(){

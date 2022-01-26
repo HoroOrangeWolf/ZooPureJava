@@ -1,5 +1,6 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Animal;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -36,12 +37,11 @@ public class SectionRepository implements Repository<Section> {
 
         Section section = optionalSection.get();
 
-        section.setDescription(element.getDescription());
-        section.setSectionUrlImage(element.getSectionUrlImage());
-        section.setMapx(element.getMapx());
-        section.setMapy(element.getMapy());
-        section.setIsOnTheMap(element.getIsOnTheMap());
-        section.setName(element.getName());
+
+
+        section.setIsOnTheMap(element.isOnTheMap());
+        section.setDescription(element.generateDescription());
+        section.setCordsOnMap(element.getCordX(), element.getCordY());
     }
 
     @Override

@@ -1,11 +1,10 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Tickets;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor

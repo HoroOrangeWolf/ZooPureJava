@@ -1,7 +1,9 @@
 package Map;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapService;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.AfricanariumSectionCreator;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.SectionCreator;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.Path;
 import com.Michalski.Minner.Mozdzierz.Ozga.Map.PathElement;
 import com.Michalski.Minner.Mozdzierz.Ozga.Tickets.Promotion;
@@ -24,10 +26,28 @@ public class MapServiceTest {
     private static List<Section> list = new ArrayList<>();
     @BeforeEach
     public void addNew(){
-        Section section1 = new Section(1L, "Oceanarium", "Tu są rybki", true, 1.f, 1.f, "");
-        Section section2 = new Section(1L, "Papugarnia", "Tu są papugi", true, 1.f, 1.f, "");
-        Section section3 = new Section(1L, "Lwy", "Tu są Lwy", true, 1.f, 1.f, "");
-        Section section4 = new Section(1L, "Lamy", "Tu są Lamy", true, 1.f, 1.f, "");
+
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section1 = sectionCreator.createSection();
+
+        section1.setUp(1L, "Tu są rybki", true, 1.f, 1.f);
+
+        Section section2 = sectionCreator.createSection();
+
+        section2.setUp(1L, "Tu są lwy", true, 1.f, 1.f);
+
+
+        Section section3 = sectionCreator.createSection();
+
+        section3.setUp(1L, "Tu są małpy", true, 1.f, 1.f);
+
+
+        Section section4 = sectionCreator.createSection();
+
+        section4.setUp(1L, "Tu są żyrafy", true, 1.f, 1.f);
+
+
 
         list = Arrays.asList(section1, section2, section3, section4);
 

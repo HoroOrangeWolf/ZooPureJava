@@ -30,14 +30,13 @@ public class SectionRepository implements Repository<Section> {
 
     @Override
     public void update(Section element) {
-        Optional<Section> optionalSection = repo.stream().filter((f) -> Objects.equals(f.getId(), element.getId())).findFirst();
 
+        Optional<Section> optionalSection = repo.stream().filter((f) -> Objects.equals(f.getId(), element.getId())).findFirst();
         if(optionalSection.isEmpty())
             return;
 
+
         Section section = optionalSection.get();
-
-
 
         section.setIsOnTheMap(element.isOnTheMap());
         section.setDescription(element.generateDescription());

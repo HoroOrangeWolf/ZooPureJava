@@ -16,5 +16,6 @@ public interface Section {
     void planTours();
     void takeSafetyPrecautions();
 
+    void setUp(Long id, String description, Boolean isOnTheMap, float x, float y);
 
 }

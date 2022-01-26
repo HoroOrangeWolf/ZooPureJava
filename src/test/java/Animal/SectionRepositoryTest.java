@@ -1,9 +1,9 @@
 package Animal;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Animal;
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.AnimalRepository;
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.SectionRepository;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.AfricanariumSectionCreator;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.SectionCreator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,11 @@ public class SectionRepositoryTest {
 
     @Test
     public void addSection(){
-        Section section = new Section(1L, "Sekcja1", "Opis", true, 0.f, 5.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         repository.save(section);
 
@@ -31,20 +35,30 @@ public class SectionRepositoryTest {
 
     @Test
     public void updateSection(){
-        Section section = new Section(1L, "Sekcja1", "Opis", true, 0.f, 5.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         repository.save(section);
 
-        Section section1 = new Section(section.getId(), "Sekcja1", "Do aktualizacji", true, 12.5f, 4.f, "Nowy link");
+        Section section2 = sectionCreator.createSection();
 
-        repository.update(section1);
+        section2.setUp(section.getId(), "desc_to_update", true, 2.f, 2.f);
 
-        Assertions.assertEquals(section, section1);
+        repository.update(section2);
+
+        Assertions.assertEquals(section.generateDescription(), section2.generateDescription());
     }
 
     @Test
     public void removeAnimal(){
-        Section section = new Section(1L, "Sekcja1", "Opis", true, 0.f, 5.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         repository.save(section);
 
@@ -55,7 +69,11 @@ public class SectionRepositoryTest {
 
     @Test
     public void removeAnimalById(){
-        Section section = new Section(1L, "Sekcja1", "Opis", true, 0.f, 5.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         repository.save(section);
 
@@ -66,7 +84,11 @@ public class SectionRepositoryTest {
 
     @Test
     public void getAnimalById(){
-        Section section = new Section(1L, "Sekcja1", "Opis", true, 0.f, 5.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         repository.save(section);
 

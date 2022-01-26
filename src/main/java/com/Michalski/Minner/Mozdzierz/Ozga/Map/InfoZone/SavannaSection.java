@@ -1,13 +1,22 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone;
 
-public class SavannaSection implements Section {
+import lombok.EqualsAndHashCode;
 
-    private int id;
+@EqualsAndHashCode
+public class SavannaSection implements Section {
+    private Long id;
     private String description;
+    private Float x, y;
+    private Boolean isOnTheMap;
 
     @Override
-    public int getId() {
+    public long getId() {
         return id;
+    }
+
+    @Override
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
@@ -16,17 +25,57 @@ public class SavannaSection implements Section {
     }
 
     @Override
-    public void manageSection() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    @Override
+    public void setIsOnTheMap(boolean isOnTheMap) {
+        this.isOnTheMap = isOnTheMap;
+    }
+
+    @Override
+    public boolean isOnTheMap() {
+        return isOnTheMap;
+    }
+
+    @Override
+    public void setCordsOnMap(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public float getCordX() {
+        return x;
+    }
+
+    @Override
+    public float getCordY() {
+        return y;
+    }
+
+    @Override
+    public void manageSection() {
+        System.out.println("Zarządzam sekcją Savanna...");
     }
 
     @Override
     public void planTours() {
-
+        System.out.println("Planuje wycieczki po Savanna...");
     }
 
     @Override
     public void takeSafetyPrecautions() {
+        System.out.println("Planuje bezpieczeństwo Savanna...");
+    }
 
+    @Override
+    public void setUp(Long id, String description, Boolean isOnTheMap, float x, float y) {
+        this.id = id;
+        this.description = description;
+        this.isOnTheMap = isOnTheMap;
+        this.x = x;
+        this.y = y;
     }
 }

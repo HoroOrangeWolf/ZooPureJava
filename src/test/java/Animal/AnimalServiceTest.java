@@ -2,7 +2,9 @@ package Animal;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Animal;
 import com.Michalski.Minner.Mozdzierz.Ozga.Animal.AnimalService;
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.AfricanariumSectionCreator;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.MapZone.SectionCreator;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -21,8 +23,11 @@ public class AnimalServiceTest {
 
     @Test
     public void AddSection(){
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
 
-        Section section = new Section(1L, "name", "description", true, 1.0f, 10.f, "t");
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         service.addSection(section);
 
@@ -37,7 +42,11 @@ public class AnimalServiceTest {
 
     @Test
     public void removeSection(){
-        Section section = new Section(1L, "name", "description", true, 1.0f, 10.f, "t");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
+
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
 
         service.addSection(section);
 
@@ -94,15 +103,22 @@ public class AnimalServiceTest {
     @Test
     public void getAllSections(){
 
-        Section section1 = new Section(1L, "Sekcja1", "Sekcja2", true, 1.f, 2.f, "");
-        Section section2 = new Section(1L, "Sekcja2", "Sekcja3", true, 1.f, 2.f, "url");
+        SectionCreator sectionCreator = new AfricanariumSectionCreator();
 
-        service.addSection(section1);
+        Section section = sectionCreator.createSection();
+
+        section.setUp(1L, "desc", true, 1.f, 1.f);
+
+        Section section2 = sectionCreator.createSection();
+
+        section.setUp(1L, "descdsadasd", true, 1.f, 1.f);
+
+        service.addSection(section);
         service.addSection(section2);
 
         List<Section> list = service.getAllSections();
 
-        Assertions.assertArrayEquals(new Section[]{section1, section2}, list.toArray(new Section[0]));
+        Assertions.assertArrayEquals(new Section[]{section, section2}, list.toArray(new Section[0]));
     }
 
 }

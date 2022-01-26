@@ -1,6 +1,5 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Notification;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 
 import java.util.ArrayList;

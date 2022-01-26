@@ -1,5 +1,7 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Animal;
 
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +51,7 @@ public class AnimalService {
     }
 
     public List<Section> getSectionsOnMap(){
-        return sectionRepository.getByPredictor(Section::getIsOnTheMap);
+        return sectionRepository.getByPredictor(Section::isOnTheMap);
     }
 
 

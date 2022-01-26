@@ -1,7 +1,5 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Animal;
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.interfaces.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class RequestRepository implements Repository<Request> {
 

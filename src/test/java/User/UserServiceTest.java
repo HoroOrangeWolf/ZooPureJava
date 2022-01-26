@@ -1,6 +1,5 @@
 package User;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.UserRepository;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.UserService;

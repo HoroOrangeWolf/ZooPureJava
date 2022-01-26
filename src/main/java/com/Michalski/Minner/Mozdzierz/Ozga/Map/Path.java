@@ -1,7 +1,6 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Map;
 
-import com.Michalski.Minner.Mozdzierz.Ozga.Animal.Section;
-import lombok.AllArgsConstructor;
+import com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone.Section;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

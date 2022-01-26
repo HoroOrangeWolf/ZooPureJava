@@ -1,6 +1,7 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Request;
 
 import com.Michalski.Minner.Mozdzierz.Ozga.Observer.Notifier;
+import com.Michalski.Minner.Mozdzierz.Ozga.Request.Verifier.CheckIsTicketBoughtOnline;
 import com.Michalski.Minner.Mozdzierz.Ozga.User.User;
 import lombok.*;
 
@@ -22,6 +23,9 @@ public class Request extends Notifier {
     private User bokUser = null;
 
     private String answer;
+
+    @EqualsAndHashCode.Exclude
+    CheckIsTicketBoughtOnline checkIsTicketBoughtOnline = new CheckIsTicketBoughtOnline();
 
     public Request(String text, User user) {
         this.text = text;

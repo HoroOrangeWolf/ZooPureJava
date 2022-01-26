@@ -1,5 +1,8 @@
 package com.Michalski.Minner.Mozdzierz.Ozga.Map.InfoZone;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public class AquariumSection implements Section {
 
     private Long id;
@@ -65,6 +68,14 @@ public class AquariumSection implements Section {
 
     @Override
     public void takeSafetyPrecautions() {
-
+        System.out.println("Planuje bezpieczeństwo sekcji...");
+    }
+    @Override
+    public void setUp(Long id, String description, Boolean isOnTheMap, float x, float y) {
+        this.id = id;
+        this.description = description;
+        this.isOnTheMap = isOnTheMap;
+        this.x = x;
+        this.y = y;
     }
 }
